@@ -1,11 +1,68 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import SiteLayout from "../layouts/SiteLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+type NavItem = {
+  label: string;
+  href: string;
+  active?: boolean;
+  comingSoon?: boolean;
+};
+
+type ResourceLink = {
+  title: string;
+  url: string;
+  note?: string;
+};
+
+type SectionGroup = {
+  title: string;
+  description?: string;
+  links: ResourceLink[];
+};
+
+const siteTitle = "Anatomy 1";
+const pageTitle = "ANAT 1 Tutor Hub";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<SiteLayout
+  title={pageTitle}
+  siteTitle={siteTitle}
+  description="An Astro + TypeScript tutor site for SRJC ANAT 1, modeled after a structured class resource page with topic navigation and grouped handouts."
+>
+  <main class="bg-white px-4 py-6 md:px-10 md:py-8">
+    <section class="mt-8 border border-neutral-300 bg-white px-6 py-6 md:px-8">
+      <div class="max-w-3xl text-neutral-800">
+        <p class="mb-4">Hi everyone,</p>
+
+        <p class="mb-4">
+          Welcome to my ANAT 1 website! I made this page to share useful links,
+          study materials, review resources, and updates that may help you in
+          Anatomy 1. This site is still a work in progress, so please let me
+          know if you notice any mistakes or have suggestions for things that
+          would be helpful to add.
+        </p>
+
+        <p class="mb-4">
+          You can reach me at
+          <a
+            href="mailto:azheng@santarosa.edu"
+            class="font-semibold text-blue-700 underline underline-offset-2"
+          >
+            azheng@santarosa.edu
+          </a>.
+        </p>
+
+        <p class="mb-4">
+          Try to use extra resources in a way that supports your studying
+          without overwhelming you. And most importantly, remember that no
+          website can replace time spent practicing, reviewing structures, and
+          working with the material directly.
+        </p>
+
+        <p class="mb-2">Good luck, and I hope this site helps!</p>
+
+        <p class="mb-1">-Anthony</p>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

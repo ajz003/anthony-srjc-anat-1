@@ -1,0 +1,158 @@
+---
+import "../styles/global.css";
+const title =
+  "Anthony's ANAT 1 | SRJC Anatomy 1 Study Help, Review Sessions, and Resources";
+const description =
+  "Anthony's ANAT 1 for SRJC students. Find Anatomy 1 study resources, tutoring support, review sessions, practice materials, lab exam prep, and helpful links for succeeding in ANAT 1.";
+const canonical = "https://your-domain.com/";
+const ogImage = "https://your-domain.com/og-image.jpg";
+
+const siteTitle = "Anatomy 1";
+
+type NavItem = {
+  label: string;
+  href: string;
+  comingSoon?: boolean;
+};
+
+const navItems: NavItem[] = [
+  { label: "Welcome", href: "/" },
+  { label: "Intro & Cells (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Tissues (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Integumentary System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Skeletal System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Muscular System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Coelom and Viscera (Coming Soon!)", comingSoon: true, href: "#" },
+  {
+    label: "Cardiovascular System (Coming Soon!)",
+    comingSoon: true,
+    href: "#",
+  },
+  { label: "Lymphatic System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Nervous System", href: "/nervous-system" },
+  { label: "Special Senses (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Digestive System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Respiratory System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Urinary System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Reproductive System (Coming Soon!)", comingSoon: true, href: "#" },
+  { label: "Endocrine System (Coming Soon!)", comingSoon: true, href: "#" },
+];
+
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  pathname === href || pathname.startsWith(`${href}/`);
+---
+
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth bg-stone-100">
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Anthony ANAT 1, SRJC Anatomy 1, Santa Rosa Junior College anatomy tutoring, ANAT 1 tutor, anatomy study help, anatomy lab exam prep, anatomy review sessions"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Anthony" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="canonical" href={canonical} /> -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Anthony's ANAT 1" />
+    <meta
+      property="og:description"
+      content="SRJC Anatomy 1 tutoring, study resources, review sessions, lab exam prep, and helpful ANAT 1 links."
+    />
+    <!-- <meta property="og:url" content={canonical} /> -->
+    <meta property="og:site_name" content="Anthony's ANAT 1" />
+    <!-- <meta property="og:image" content={ogImage} /> -->
+    <meta
+      property="og:image:alt"
+      content="Anthony's ANAT 1 website for SRJC students"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anthony's ANAT 1" />
+    <meta
+      name="twitter:description"
+      content="SRJC Anatomy 1 tutoring, review sessions, study help, and ANAT 1 resources."
+    />
+    <!-- <meta name="twitter:image" content={ogImage} /> -->
+  </head>
+  <body class="min-h-full font-sans text-neutral-800 antialiased">
+    <header class="border-b border-neutral-300 bg-white px-5 py-4">
+      <div
+        class="mx-auto flex w-full max-w-340 flex-col gap-4 md:flex-row md:items-center md:justify-between"
+      >
+        <div class="text-lg font-medium text-neutral-800">Anthony's ANAT 1</div>
+
+        <div class="w-full md:max-w-90">
+          <input
+            type="text"
+            placeholder="Search this site"
+            aria-label="Search this site"
+            class="w-full rounded-full border border-neutral-300 bg-white px-4 py-3 text-[0.95rem] text-neutral-800 outline-none transition focus:border-blue-500"
+          />
+        </div>
+      </div>
+    </header>
+
+    <div
+      class="mx-auto grid min-h-[calc(100vh-69px)] w-full max-w-340 grid-cols-1 md:grid-cols-[290px_minmax(0,1fr)]"
+    >
+      <aside
+        class="border-b border-neutral-300 bg-neutral-50 py-4 md:border-r md:border-b-0"
+      >
+        <div class="px-4 pb-3 text-base font-semibold text-neutral-800">
+          {siteTitle}
+        </div>
+
+        <ul class="m-0 list-none p-0">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "block px-4 py-2.5 text-[0.94rem] no-underline transition hover:bg-neutral-100",
+                    {
+                      "border-r-0 bg-blue-50 font-semibold text-blue-800 md:border-r-[3px] md:border-blue-800":
+                        isActive(item.href),
+                      "text-neutral-400":
+                        item.comingSoon && !isActive(item.href),
+                      "text-neutral-800": !(
+                        item.comingSoon && !isActive(item.href)
+                      ),
+                    },
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+      <slot />
+    </div>
+    <footer class="border-t border-neutral-300 bg-white px-5 py-6">
+      <div
+        class="mx-auto flex w-full max-w-340 flex-col gap-2 text-sm text-neutral-600"
+      >
+        <p class="font-medium text-neutral-800">Anthony's ANAT 1</p>
+        <p>Built as a study resource hub for SRJC Anatomy 1 students.</p>
+        <p>
+          This website was inspired by
+          <a
+            href="https://sites.google.com/view/srjcanatomy1/welcome?authuser=0"
+            target="_blank"
+            rel="noreferrer"
+            class="text-blue-700 underline underline-offset-2 hover:text-blue-800"
+          >
+            Danielle King's Anatomy 1 website
+          </a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

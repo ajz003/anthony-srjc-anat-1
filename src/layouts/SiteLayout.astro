@@ -41,6 +41,9 @@ const navItems: NavItem[] = [
 const { pathname } = Astro.url;
 const isActive = (href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
+
+const menuId = "mobile-nav";
+const buttonId = "mobile-nav-button";
 ---
 
 <!doctype html>
@@ -101,37 +104,70 @@ const isActive = (href: string) =>
       class="mx-auto grid min-h-[calc(100vh-69px)] w-full max-w-340 grid-cols-1 md:grid-cols-[290px_minmax(0,1fr)]"
     >
       <aside
-        class="border-b border-neutral-300 bg-neutral-50 py-4 md:border-r md:border-b-0"
+        class="border-b border-neutral-300 bg-neutral-50 md:border-r md:border-b-0"
       >
-        <div class="px-4 pb-3 text-base font-semibold text-neutral-800">
-          {siteTitle}
+        <div
+          class="flex items-center justify-between px-4 py-4 md:block md:py-0"
+        >
+          <div class="text-base font-semibold text-neutral-800 md:pb-3">
+            {siteTitle}
+          </div>
+
+          <button
+            id={buttonId}
+            type="button"
+            class="inline-flex items-center justify-center rounded-md border border-neutral-300 bg-white p-2 text-neutral-700 hover:bg-neutral-100 md:hidden"
+            aria-expanded="false"
+            aria-controls={menuId}
+            aria-label="Open navigation menu"
+          >
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
 
-        <ul class="m-0 list-none p-0">
-          {
-            navItems.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={[
-                    "block px-4 py-2.5 text-[0.94rem] no-underline transition hover:bg-neutral-100",
-                    {
-                      "border-r-0 bg-blue-50 font-semibold text-blue-800 md:border-r-[3px] md:border-blue-800":
-                        isActive(item.href),
-                      "text-neutral-400":
-                        item.comingSoon && !isActive(item.href),
-                      "text-neutral-800": !(
-                        item.comingSoon && !isActive(item.href)
-                      ),
-                    },
-                  ]}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        <nav
+          id={menuId}
+          class="hidden border-t border-neutral-300 md:block md:border-t-0"
+        >
+          <ul class="m-0 list-none p-0">
+            {
+              navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "block px-4 py-2.5 text-[0.94rem] no-underline transition hover:bg-neutral-100",
+                      {
+                        "border-r-0 bg-blue-50 font-semibold text-blue-800 md:border-r-[3px] md:border-blue-800":
+                          isActive(item.href),
+                        "text-neutral-400":
+                          item.comingSoon && !isActive(item.href),
+                        "text-neutral-800": !(
+                          item.comingSoon && !isActive(item.href)
+                        ),
+                      },
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </aside>
       <slot />
     </div>
@@ -154,6 +190,18 @@ const isActive = (href: string) =>
         </p>
       </div>
     </footer>
+    <script>
+      const button = document.getElementById("mobile-nav-button");
+      const menu = document.getElementById("mobile-nav");
+
+      if (button && menu) {
+        button.addEventListener("click", () => {
+          const isOpen = !menu.classList.contains("hidden");
+          menu.classList.toggle("hidden");
+          button.setAttribute("aria-expanded", String(!isOpen));
+        });
+      }
+    </script>
     <script
       data-goatcounter="https://anthony.goatcounter.com/count"
       async

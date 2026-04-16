@@ -144,6 +144,16 @@ const groups: SectionGroup[] = [
       },
     ],
   },
+  {
+    title: "Anki Decks",
+    description: "Custom-made Anki decks to download for this system.",
+    links: [
+      {
+        title: "Download Nervous System Anki Deck (16.5 MB)",
+        url: "/downloads/anat1-nervous-system.apkg",
+      },
+    ],
+  },
   //   {
   //     title: "For Fun",
   //     description:
@@ -190,8 +200,9 @@ const groups: SectionGroup[] = [
               <li class="my-2">
                 <a
                   href={link.url}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={link.url.endsWith(".apkg") ? undefined : "_blank"}
+                  rel={link.url.endsWith(".apkg") ? undefined : "noreferrer"}
+                  download={link.url.endsWith(".apkg") ? true : undefined}
                   class="text-blue-700 underline-offset-2 hover:underline"
                 >
                   {link.title}

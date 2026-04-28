@@ -229,7 +229,11 @@ const groups: SectionGroup[] = [
     <h1 class="mb-5 text-[2rem] font-normal leading-tight text-neutral-800">
       {pageHeading}
     </h1>
-    <details class="mt-10 border border-neutral-300 bg-white" open={false}>
+    <details
+      class="mt-10 border border-neutral-300 bg-white"
+      open={false}
+      data-collapsible
+    >
       <summary class="cursor-pointer list-none px-4 py-4 md:px-8">
         <div class="flex items-center justify-between gap-4">
           <div>
@@ -243,9 +247,10 @@ const groups: SectionGroup[] = [
           </div>
 
           <span
-            class="shrink-0 rounded border border-neutral-300 bg-neutral-50 px-3 py-1 text-sm text-neutral-700 transition details-open:rotate-180"
+            class="shrink-0 rounded border border-neutral-300 bg-neutral-50 px-3 py-1 text-sm text-neutral-700"
+            data-collapsible-label
           >
-            SHOW
+            Show
           </span>
         </div>
       </summary>
@@ -259,13 +264,24 @@ const groups: SectionGroup[] = [
             flowchart below.
           </p>
 
+          <p class="mb-4 text-sm text-neutral-500">
+            Tap or click any image to open it full size.
+          </p>
+
           <div class="space-y-6">
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/esophagus_sset.png"
-                alt="Esophagus histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/esophagus_sset.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/esophagus_sset.png"
+                  alt="Esophagus histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Esophagus</strong>
                 Stratified squamous epithelium; look for protection against abrasion.
@@ -273,11 +289,40 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/villi.png"
-                alt="Small intestine villi"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/simple_columnar_et.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/simple_columnar_et.png"
+                  alt="Simple columnar epithelium in mucosa"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
+              <figcaption class="text-sm text-neutral-700">
+                <strong class="block text-neutral-800">
+                  Simple columnar epithelium in mucosa
+                </strong>
+                Ileum. The stomach also has simple columnar epithelium in the mucosa
+                (but not goblet cells!).
+              </figcaption>
+            </figure>
+
+            <figure class="border border-neutral-300 bg-neutral-50 p-3">
+              <a
+                href="/images/digestive/villi.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/villi.png"
+                  alt="Small intestine villi"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">
                   Villi of the small intestine (all 3 parts)
@@ -287,11 +332,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/brunners.png"
-                alt="Brunner's glands histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/brunners.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/brunners.png"
+                  alt="Brunner's glands histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">
                   Brunner's glands in the duodenum
@@ -301,11 +353,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/peyers.jpg"
-                alt="Peyer's patches histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/peyers.jpg"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/peyers.jpg"
+                  alt="Peyer's patches histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">
                   Peyer's patches in the ileum
@@ -315,11 +374,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/gastric_pits.png"
-                alt="Stomach histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/gastric_pits.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/gastric_pits.png"
+                  alt="Stomach histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Stomach</strong>
                 Gastric pits of the stomach.
@@ -327,11 +393,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/stomach_cells_fundus.png"
-                alt="Fundic stomach histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/stomach_cells_fundus.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/stomach_cells_fundus.png"
+                  alt="Fundic stomach histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Stomach (Fundus)</strong>
                 Parietal cells (pink fried eggs) and Chief cells (yellow waypoint)
@@ -339,11 +412,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/large_intestine.png"
-                alt="Large intestine histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/large_intestine.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/large_intestine.png"
+                  alt="Large intestine histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Large Intestine</strong>
                 NO VILLI; has goblet cells and intestinal glands
@@ -351,23 +431,38 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/liver_lobule.jpg"
-                alt="Liver histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/liver_lobule.jpg"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/liver_lobule.jpg"
+                  alt="Liver histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Liver</strong>
-                Hepatic lobule pattern, central veins, and portal triads.
+                Hepatic lobule pattern (5-6 side lobules), central veins, and portal
+                triads.
               </figcaption>
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/pancreatic_islets.png"
-                alt="Pancreas histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/pancreatic_islets.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/pancreatic_islets.png"
+                  alt="Pancreas histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Pancreas</strong>
                 Darker exocrine tissue with lighter-staining pancreatic islets.
@@ -375,11 +470,18 @@ const groups: SectionGroup[] = [
             </figure>
 
             <figure class="border border-neutral-300 bg-neutral-50 p-3">
-              <img
-                src="/images/digestive/salivary_glands.png"
-                alt="Salivary gland histology"
-                class="mb-3 h-auto w-full border border-neutral-200 bg-white"
-              />
+              <a
+                href="/images/digestive/salivary_glands.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block"
+              >
+                <img
+                  src="/images/digestive/salivary_glands.png"
+                  alt="Salivary gland histology"
+                  class="mb-3 h-auto w-full border border-neutral-200 bg-white"
+                />
+              </a>
               <figcaption class="text-sm text-neutral-700">
                 <strong class="block text-neutral-800">Salivary Gland</strong>
                 NO ISLETS, NO LOBULES. Serous and mucous cells.
@@ -444,14 +546,17 @@ const groups: SectionGroup[] = [
         <div
           class="mt-6 border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900"
         >
-          <strong class="font-semibold">Study tip:</strong> PRINT THIS OUT AND BRING TO LAB WITH YOU. Use the images above or slides in lab and
-          this flowchart together. Go back and forth between them until you can explain
-          why each tissue belongs where it does.
+          <strong class="font-semibold">Study tip:</strong> PRINT THIS OUT AND BRING
+          TO LAB WITH YOU. Use the images above or slides in lab and this flowchart
+          together. Go back and forth between them until you can explain why each
+          tissue belongs where it does.
         </div>
-                <div
+        <div
           class="mt-6 border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900"
         >
-          <strong class="font-semibold">Study tip:</strong> Find a partner in lab and test each other on random digestive system slides to try and identify them.
+          <strong class="font-semibold">Study tip:</strong> Find a partner in lab
+          and test each other on random digestive system slides to try and identify
+          them.
         </div>
 
         <p class="mt-3 text-sm text-neutral-500">
@@ -509,4 +614,22 @@ const groups: SectionGroup[] = [
       ))
     }
   </main>
+  <script>
+    const collapsibles =
+      document.querySelectorAll<HTMLDetailsElement>("[data-collapsible]");
+
+    collapsibles.forEach((details) => {
+      const label = details.querySelector<HTMLElement>(
+        "[data-collapsible-label]",
+      );
+      if (!label) return;
+
+      const updateLabel = () => {
+        label.textContent = details.open ? "HIDE" : "SHOW";
+      };
+
+      updateLabel();
+      details.addEventListener("toggle", updateLabel);
+    });
+  </script>
 </SiteLayout>
